@@ -1,60 +1,32 @@
 import React from 'react';
-import _ from 'lodash';
-
+import TaskList from './task-list'
+import $ from 'jquery';
 
 export default class App extends React.Component {
-    static defaultProps = {
-        task: [
-            {
-                id: 1,
-                task: "Make a test",
-                isCompleted: true,
-            },
-            {
-                id: 2,
-                task: "Plan a schedule",
-                isCompleted: true,
-            }
-        ]
-    }
-
-    static propTypes = {}
-
-    constructor() {
-        super();
-    }
-
-    renderTask() {
-
+    constructor(props) {
+        super(props);
+        this.state = {tasks: []}
     }
 
     render() {
-        console.log(this.props);
         return (
-            <table>
-                <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    _.map(this.props.task, item => {
-                        return (
-                            <tr key={_.uniqueId()}>
-                                <td key={_.uniqueId()}>{item.task}</td>
-                                <td key={_.uniqueId()}>{item.isCompleted}</td>
-                            </tr>
-                        )
-                    })
-                }
-                </tbody>
-            </table>
+            <div>
+                <h1>React Tutorial</h1>
+                <TaskList tasks={this.state.tasks}/>
+            </div>
         )
     }
 
     componentDidMount() {
-        console.log("DONE");
+        this.req = $.get("http://jsonplaceholder.typicode.com/todos?_start=0&_end=10", result => {
+            _.map(result, item => {
+                this.state.tasks.push(item);
+            });
+            this.setState({tasks: this.state.tasks});
+        });
+    }
+
+    componentWillUnmount() {
+        this.req.abort();
     }
 }
