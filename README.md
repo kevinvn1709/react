@@ -18,7 +18,7 @@ Update soon....
 
 ## Reference
 
-#Map foreach item
+#### Map foreach item
 ES5:
 ```javascript
 this.props.task.map(function(item, index){
@@ -51,7 +51,7 @@ _.map(this.props.task, (item, index) => <Item key={index} {...item} />)
 ```
 
 
-#Property initializers
+#### Property initializers
 
 ES5:
 ```javascript
