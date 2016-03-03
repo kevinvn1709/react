@@ -1,4 +1,4 @@
-#React: Setting up a Project
+#React: Setting up a Project.
 - Setting up a webapp with React (0.14)
 - Using babel, webpack and ES6 preset
 
