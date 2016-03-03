@@ -3,8 +3,9 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+    context: path.join(__dirname, "src"),
     devtool: debug ? "inline-sourcemap" : null,
-    entry: "./src",
+    entry: "./todos/index.js",
     module: {
         loaders: [
             {
