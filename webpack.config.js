@@ -1,28 +1,30 @@
+var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    devtool: 'inline-source-map',
-    entry: './src',
-    output: {
-        path: __dirname,
-        filename: 'bundle.js'
-    },
+    devtool: debug ? "inline-sourcemap" : null,
+    entry: "./src",
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015']
+                exclude: /(node_modules)/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['react', 'es2015', 'stage-0'],
+                    plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+                }
             }
         ]
     },
-    resolve: {
-        modulesDirectories: ['node_modules', 'src'],
-        extensions: ['', '.js']
+    output: {
+        path: __dirname,
+        filename: "bundle.js"
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ]
+    plugins: debug ? [] : [
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
+    ],
 };
