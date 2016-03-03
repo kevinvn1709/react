@@ -1,4 +1,7 @@
 #React: Setting up React Project
+- Setting up a webapp with React (0.14)
+- Using babel, webpack and ES6 preset
+
 ## Version
 1.0.0
 
