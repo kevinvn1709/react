@@ -15,6 +15,22 @@ export default class Task extends React.Component {
         this.setState({isEditing: false});
     }
 
+    renderTask() {
+        const { title, completed } = this.props;
+        const taskStyle = {
+            color: completed ? 'green' : 'red',
+            cursor: 'pointer'
+        }
+
+        return (
+            <td onClick={this.toggleTask.bind(this, title)} style={taskStyle}>{this.props.title}</td>
+        )
+    }
+
+    toggleTask(title) {
+        this.props.toggleTask(title);
+    }
+
     renderActions() {
         if (this.state.isEditing) {
             return (
@@ -35,7 +51,7 @@ export default class Task extends React.Component {
     render() {
         return (
             <tr>
-                <td>{this.props.title}</td>
+                {this.renderTask()}
                 {this.renderActions()}
             </tr>
         )

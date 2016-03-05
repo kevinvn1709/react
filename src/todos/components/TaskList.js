@@ -1,7 +1,7 @@
 import React from 'react';
-import TableHeader from './table-header'
-import Task from './task'
-import CreateTask from  './create-task'
+import TableHeader from './TableHeader'
+import Task from './Task'
+import CreateTask from  './../actions/CreateTask'
 import _ from 'lodash';
 
 
@@ -21,12 +21,19 @@ export default class TaskList extends React.Component {
                     <TableHeader />
                     <tbody>
                     {
-                        _.map(this.state.tasks, (task, index) => <Task key={index} {...task} />)
+                        _.map(this.state.tasks, (task, index) => <Task key={index} {...task}
+                                                                       toggleTask={this.toggleTask.bind(this)}/>)
                     }
                     </tbody>
                 </table>
             </div>
         )
+    }
+
+    toggleTask(title) {
+        const foundTask = _.find(this.state.tasks, task => task.title === title);
+        foundTask.completed = !foundTask.completed;
+        this.setState({tasks: this.state.tasks});
     }
 
     createTask(title) {

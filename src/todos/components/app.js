@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskList from './task-list'
+import TaskList from './TaskList'
 import $ from 'jquery';
 
 export default class App extends React.Component {
