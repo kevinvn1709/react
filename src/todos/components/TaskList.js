@@ -1,7 +1,7 @@
 import React from 'react';
 import TableHeader from './TableHeader'
 import Task from './Task'
-import CreateTask from  './../actions/CreateTask'
+import CreateTask from  './CreateTask'
 import _ from 'lodash';
 
 

@@ -4,10 +4,12 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
+    "history": "^2.0.1",
     "jquery": "^2.2.1",
     "lodash": "^4.6.1",
     "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react-dom": "^0.14.6",
+    "react-router": "^2.0.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.0",
