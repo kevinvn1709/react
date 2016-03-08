@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import Navigation from '../components/Navigation';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import _ from 'lodash';
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            posts: []
+        }
     }
 
     render() {
@@ -16,54 +21,29 @@ export default class Home extends React.Component {
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                            <div class="post-preview">
-                                <a href="post.html">
-                                    <h2 class="post-title">
-                                        Man must explore, and this is exploration at its greatest
-                                    </h2>
-                                    <h3 class="post-subtitle">
-                                        Problems look mighty small from 150 miles up
-                                    </h3>
-                                </a>
-                                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
-                            </div>
-                            <hr></hr>
-                            <div class="post-preview">
-                                <a href="post.html">
-                                    <h2 class="post-title">
-                                        I believe every human has a finite number of heartbeats. I don't intend to waste
-                                        any
-                                        of mine.
-                                    </h2>
-                                </a>
-                                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
-                            </div>
-                            <hr></hr>
-                            <div class="post-preview">
-                                <a href="post.html">
-                                    <h2 class="post-title">
-                                        Science has not yet mastered prophecy
-                                    </h2>
-                                    <h3 class="post-subtitle">
-                                        We predict too much for the next year and yet far too little for the next ten.
-                                    </h3>
-                                </a>
-                                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
-                            </div>
-                            <hr></hr>
-                            <div class="post-preview">
-                                <a href="post.html">
-                                    <h2 class="post-title">
-                                        Failure is not an option
-                                    </h2>
-                                    <h3 class="post-subtitle">
-                                        Many say exploration is part of our destiny, but it’s actually our duty to
-                                        future generations.
-                                    </h3>
-                                </a>
-                                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
-                            </div>
-                            <hr></hr>
+                            {
+                                _.map(this.state.posts, (post, id) => {
+                                    return (
+                                        <div key={_.uniqueId()}>
+                                            <div class="post-preview">
+                                                <Link to={"/post/" + post.id}>
+                                                    <h2 class="post-title">
+                                                        {post.title}
+                                                    </h2>
+                                                    <h3 class="post-subtitle">
+                                                        {post.body}
+                                                    </h3>
+                                                </Link>
+                                                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on
+                                                    September
+                                                    24,
+                                                    2014</p>
+                                            </div>
+                                            <hr />
+                                        </div>
+                                    )
+                                })
+                            }
                             <ul class="pager">
                                 <li class="next">
                                     <a href="#">Older Posts &rarr;</a>
@@ -78,7 +58,12 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-
+        this.req = $.get("http://jsonplaceholder.typicode.com/posts?_start=0&_end=10", result => {
+            _.map(result, item => {
+                this.state.posts.push(item);
+            })
+            this.setState({posts: this.state.posts});
+        });
     }
 
     componentWillUnmount() {

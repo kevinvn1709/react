@@ -21,6 +21,11 @@ export default class Header extends React.Component {
             backgroundImage: "url('assets/img/contact-bg.jpg')"
         };
 
+        var divStylePost = {
+            backgroundImage: "url('assets/img/post-bg.jpg')"
+        };
+
+
         switch (this.state.type) {
             case 'contact':
                 return (
@@ -49,6 +54,24 @@ export default class Header extends React.Component {
                                         <h1>About Me</h1>
                                         <hr class="small"></hr>
                                         <span class="subheading">This is what I do.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                )
+                break;
+            case 'post':
+                return (
+                    <header class="intro-header" style={divStylePost}>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                                    <div class="post-heading">
+                                        <h1>{this.props.title}</h1>
+                                        <h2 class="subheading">{this.props.title}</h2>
+                                    <span class="meta">Posted by <a href="#">Start
+                                        Bootstrap</a> on August 24, 2014</span>
                                     </div>
                                 </div>
                             </div>

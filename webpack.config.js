@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
     context: path.join(__dirname, "src"),
     devtool: debug ? "inline-sourcemap" : null,
-    entry: "./website/index.js",
+    entry: "./news/index.js",
     module: {
         loaders: [
             {
@@ -14,7 +14,7 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: ['react', 'es2015', 'stage-0'],
-                    pluggitins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+                    plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
                 }
             }
         ]
