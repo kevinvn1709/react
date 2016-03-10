@@ -28,7 +28,7 @@ export default class App extends React.Component {
     render() {
         var taskList;
         if (this.state.loaded == true) {
-            taskList = <TaskList items={this.state.items} />
+            taskList = <TaskList items={this.state.items}/>
         } else {
             taskList = 'Fetching data from Firebase...';
         }
