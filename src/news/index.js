@@ -22,7 +22,7 @@ export default class App extends React.Component {
                 message: 'Lessons',
                 number: 12
             }
-        },{
+        }, {
             imageUrl: 'https://s3.amazonaws.com/media-p.slid.es/uploads/alexanderfarennikov/images/1198519/reactjs.png',
             title: 'React Tutorials',
             description: "Lots of people use React as the V in MVC. Since React makes no assumptions about the rest of your technology stack, it's easy to try it out on a small feature in an existing project.",
