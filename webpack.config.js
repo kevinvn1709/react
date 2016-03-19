@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
     context: path.join(__dirname, "src"),
     devtool: debug ? "inline-sourcemap" : null,
-    entry: "./todo-firebase/index.js",
+    entry: "./todo-flux/index.js",
     module: {
         loaders: [
             {
