@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class BookDetail extends React.Component {
     render() {
         if(!this.props.book){
-            return <div>Waiting....</div>
+            return <div>Waiting..dsfsd..</div>
         }
 
 
