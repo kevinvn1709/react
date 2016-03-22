@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 class BookDetail extends React.Component {
     render() {
         if(!this.props.book){
-            return <div>Waiting..dsfsd..</div>
+            return <div>Waiting....</div>
         }
 
 
         return (
             <div>
-                {this.props.book.title}
+                {this.props.book.title} - {this.props.user.author}
             </div>
         )
     }
@@ -18,7 +18,8 @@ class BookDetail extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        book: state.activeBook
+        book: state.activeBook,
+        user: state.user
     }
 }
 
