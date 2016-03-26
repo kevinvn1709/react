@@ -1,0 +1,12 @@
+th{
+    text-align: center;
+}
+tr, td{
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+td:nth-child(2){
+    width: 150px;
+    height: 150px;
+}

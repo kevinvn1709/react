@@ -25,6 +25,7 @@ export default class SearchBar extends React.Component {
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <form class="navbar-form navbar-left" role="search" style={styleWidth}>
                             <input type="text" class="form-control" placeholder="What's video you looking for ...?"
+                                   autoFocus="true"
                                    style={styleInput}
                                    onChange={this.handleOnChange.bind(this)}/>
                         </form>

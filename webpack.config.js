@@ -13,13 +13,7 @@ module.exports = {
             loader: 'babel-loader',
             query: {
                 presets: ['react', 'es2015', 'stage-0'],
-                plugins: [['react-transform', {
-                    transforms: [{
-                        transform: 'react-transform-hmr',
-                        imports: ['react'],
-                        locals: ['module']
-                    }]
-                }], 'react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+                plugins: [ 'react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
             }
         },
         ]
