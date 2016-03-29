@@ -3206,7 +3206,7 @@ jQuery.extend({
 
 	Deferred: function( func ) {
 		var tuples = [
-				// action, add listener, listener list, final state
+				// actions, add listener, listener list, final state
 				[ "resolve", "done", jQuery.Callbacks("once memory"), "resolved" ],
 				[ "reject", "fail", jQuery.Callbacks("once memory"), "rejected" ],
 				[ "notify", "progress", jQuery.Callbacks("memory") ]
@@ -4335,7 +4335,7 @@ jQuery.event = {
 		}
 		event.type = type;
 
-		// If nobody prevented the default action, do it now
+		// If nobody prevented the default actions, do it now
 		if ( !onlyHandlers && !event.isDefaultPrevented() ) {
 
 			if ( (!special._default || special._default.apply( eventPath.pop(), data ) === false) &&
